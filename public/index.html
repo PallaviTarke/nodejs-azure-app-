@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Data</title>
+</head>
+<body>
+  <h2>User Form</h2>
+  <form id="userForm">
+    <input type="text" id="username" placeholder="Enter name" required />
+    <button type="submit">Save</button>
+  </form>
+  <h3>Response:</h3>
+  <div id="response"></div>
+
+  <script>
+    document.getElementById('userForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const res = await fetch('/user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: username })
+      });
+      const data = await res.json();
+      document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

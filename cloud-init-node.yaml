@@ -1,0 +1,21 @@
+# cloud-init.yml
+#cloud-config
+package_update: true
+packages:
+  - git
+  - curl
+  - build-essential
+
+runcmd:
+  - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  - apt-get install -y nodejs
+  - git clone https://github.com/PallaviTarke/nodejs-azure-app-.git /home/azureuser/app
+  - cd /home/azureuser/app
+  - npm install
+  - echo 'export MONGO_URL=mongodb://10.0.1.4:27017/mydb' >> /etc/profile
+  - echo 'export REDIS_URL=redis://10.0.1.5:6379' >> /etc/profile
+  - export MONGO_URL=mongodb://10.0.1.4:27017/mydb
+  - export REDIS_URL=redis://10.0.1.5:6379
+  - source /etc/profile
+  - nohup node index.js > output.log 2>&1 &
+

@@ -1,14 +1,16 @@
 {
-  "name": "nodejs-azure-app",
+  "name": "nodejs-mongo-redis-azure",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A Node.js app with MongoDB, Redis, and a simple frontend to demonstrate real-time data flow.",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^7.6.1",
-    "redis": "^4.6.7",
-    "dotenv": "^16.3.1"
+    "mongoose": "^7.8.7",
+    "redis": "^4.6.7"
   }
 }
+
+
